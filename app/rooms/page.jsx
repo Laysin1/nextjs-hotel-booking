@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 import FilterSection from "./_components/FilterSection";
 
 import styles from "./styles.module.css";

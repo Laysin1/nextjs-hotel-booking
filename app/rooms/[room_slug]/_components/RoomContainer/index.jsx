@@ -21,12 +21,12 @@ async function RoomContainer({ params }) {
 
   const room = await getRoomById(room_slug);
 
-  const room_images = await getRoomImages(room_slug ?? []);
+  const room_images = (await getRoomImages(room_slug)) || [];
 
   const images = room_images.map(
-    (item) => `${SUPABASE_ROOMS_URL}/${item.img_path}`
+    (item) => `${SUPABASE_ROOMS_URL}/${item.image || item.img_path}`
   );
-
+console.log("ROOM DETAIL IMAGES:", images);
   if (!room) notFound();
 
   async function bookingAction(prevState, formData) {

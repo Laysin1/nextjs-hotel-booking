@@ -4,7 +4,15 @@ import RoomItem from "../RoomItem";
 import { isValid } from "date-fns";
 
 async function RoomsSection({ filter, range }) {
-  const rooms = (await getAllRooms()) || [];
+  const rooms = await getAllRooms();
+
+if (!rooms || rooms.length === 0) {
+  return (
+    <div className={styles.roomsGrid}>
+      <p>Loading rooms...</p>
+    </div>
+  );
+}
 
   let filteredRooms = rooms;
 

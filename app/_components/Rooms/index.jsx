@@ -24,7 +24,7 @@ async function Rooms() {
               <RoomCard key={index} room={item} />
             ))
           ) : (
-            <p>No rooms found.</p>
+            <p>Loading rooms...</p>
           )}
         </div>
       </div>
