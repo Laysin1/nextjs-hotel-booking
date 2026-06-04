@@ -1,8 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY ?? "";
 const supabaseSchemaEnv =
-  process.env.NEXT_PUBLIC_SUPABASE_SCHEMA_ENV ?? "PUBLIC";
+  process.env.NEXT_PUBLIC_SUPABASE_SCHEMA_ENV ?? "public";
 
 // USED FOR UNAUTHENTICATED ACTIONS
 const supabase = createClient(supabaseUrl, supabaseKey, {

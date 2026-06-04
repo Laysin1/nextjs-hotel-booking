@@ -4,10 +4,7 @@ import RoomItem from "../RoomItem";
 import { isValid } from "date-fns";
 
 async function RoomsSection({ filter, range }) {
-  const rooms = await getAllRooms();
-  console.log({ rooms: rooms.length });
-
-  // let filteredRooms = await filterRoomsByDate();
+  const rooms = (await getAllRooms()) || [];
 
   let filteredRooms = rooms;
 
@@ -18,13 +15,16 @@ async function RoomsSection({ filter, range }) {
   ) {
     const arrivalDate = range.split("_")?.at(0);
     const departureDate = range.split("_")?.at(1);
-    filteredRooms = await filterRoomsByDate(arrivalDate, departureDate);
+
+    filteredRooms =
+      (await filterRoomsByDate(arrivalDate, departureDate)) || [];
   }
 
   switch (filter) {
     case "high-price":
       filteredRooms = filteredRooms.sort((a, b) => b.price - a.price);
       break;
+
     case "low-price":
       filteredRooms = filteredRooms.sort((a, b) => a.price - b.price);
       break;
@@ -36,22 +36,27 @@ async function RoomsSection({ filter, range }) {
     case "max-guests":
       filteredRooms = filteredRooms.sort((a, b) => a.capacity - b.capacity);
       break;
+
     default:
-      filteredRooms = filteredRooms;
+      break;
   }
 
   return (
     <div className={styles.roomsGrid}>
-      {filteredRooms.map((item) => (
-        <RoomItem
-          key={item.id}
-          id={item.id}
-          title={item.name}
-          price={item.price}
-          imgPath={item.thumbnail}
-          link="#"
-        />
-      ))}
+      {filteredRooms.length > 0 ? (
+        filteredRooms.map((item) => (
+          <RoomItem
+            key={item.id}
+            id={item.id}
+            title={item.name}
+            price={item.price}
+            imgPath={item.thumbnail}
+            link="#"
+          />
+        ))
+      ) : (
+        <p>No rooms found.</p>
+      )}
     </div>
   );
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Hotel Booking System
 
 ## Table of Contents
@@ -228,3 +229,6 @@ Feel free to submit issues or pull requests. Contributions, suggestions, and imp
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](./blob/main/Licence.txt) file for details.
+=======
+# nextjs-hotel-booking
+>>>>>>> 5a5aa096ff79849a1aaa17a4949b710a7f502627

@@ -4,16 +4,16 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
 
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "kapumuyablpuibhumzdj.supabase.co",
-        port: "",
-        pathname: "/storage/v1/object/public/rooms-imgs/**",
-      },
-    ],
-  },
+images: {
+  remotePatterns: [
+    {
+      protocol: "https",
+      hostname: "vgllnvvymcfzbaoipjrf.supabase.co",
+      port: "",
+      pathname: "/storage/v1/object/public/rooms-imgs/**",
+    },
+  ],
+},
 
   async headers() {
     return [

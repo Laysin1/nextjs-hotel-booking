@@ -1,13 +1,13 @@
 import supabase from "./db";
 
 export async function getAllRooms() {
-  let { data: rooms, error } = await supabase.from("rooms").select("*");
+  let { data: rooms, error } = await supabase
+    .schema("public")
+    .from("rooms")
+    .select("*");
 
-  // await new Promise((res) => setTimeout(res, 2000));
-
-  if (error) {
-    console.log({ roomsError: error.message });
-  }
+  console.log("ROOMS DATA:", rooms);
+  console.log("ROOMS ERROR:", error);
 
   return rooms;
 }
