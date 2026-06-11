@@ -3,6 +3,18 @@ import styles from "./styles.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHistory, faSignOut, faUser } from "@fortawesome/free-solid-svg-icons";
 import { signOutAction } from "../_lib/actions";
+import * as Sentry from '@sentry/nextjs';
+      
+
+// Add or edit your "generateMetadata" to include the Sentry trace data:
+export function generateMetadata() {
+  return {
+    // ... your existing metadata
+    other: {
+      ...Sentry.getTraceData()
+    }
+  };
+}
 
 function Layout({ children }) {
   return (
